@@ -1,0 +1,34 @@
+    /* Estilos para el contenedor principal */
+    .cart-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  
+    /* Estilos para el título del carrito */
+    .cart-title {
+      text-align: center;
+      color: darkblue;
+      font-size: larger;
+    }
+  
+    /* Estilos para el total a pagar */
+    .total {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: larger;
+      font-weight: bold;
+      color: darkgreen;
+    }
+  
+    /* Estilos para la lista de productos */
+    .product-list {
+      margin-top: 10px;
+    }
+  
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }

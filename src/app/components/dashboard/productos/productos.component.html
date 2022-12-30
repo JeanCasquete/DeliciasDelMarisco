@@ -1,0 +1,14 @@
+
+<br><br>
+<h1 class="product-title">Platos</h1>
+<div class="boxes">
+  <div *ngFor="let product of products | async">
+    <div class="product-box">
+      <img [src]="product.imageUrl" width="150" height="140">
+      <div class="product-name">{{ product.name }}</div>
+      <div class="product-price">{{ product.price }}</div>
+      <button class="buttonproduct" (click)="addToCart(product)">Añadir al carrito</button>
+    </div>
+  </div>
+</div>
+

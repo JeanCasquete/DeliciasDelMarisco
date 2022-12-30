@@ -1,0 +1,34 @@
+<body>
+    <!-- cart.component.html -->
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+      <!-- Utilizamos la directiva ngFor para iterar sobre la lista de productos -->
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <!-- Añadimos un botón para eliminar el producto -->
+        <td><button (click)="removeProduct(product)">Eliminar</button></td>
+      </tr>
+    </table>
+    
+    <!-- Mostramos el total del carrito -->
+    <p>Total: {{ getTotal() | currency }}</p>
+    <form (submit)="addProduct()">
+      <label>
+        Nombre:
+        <input type="text" [(ngModel)]="product.name" name="name">
+      </label>
+      <br>
+      <label>
+        Precio:
+        <input type="number" [(ngModel)]="product.price" name="price">
+      </label>
+      <br>
+      <button type="submit">Agregar al carrito</button>
+    </form>
+   <a routerLink="/dashboard" ><button type="button" class="btn btn-primary">Primary </button></a>
+    </body>

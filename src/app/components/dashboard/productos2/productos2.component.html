@@ -1,0 +1,55 @@
+<br><br><br>
+<div class="form-container">
+  <form (ngSubmit)="addProduct()" [formGroup]="productForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" formControlName="price">
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" (change)="onImageChange($event)" accept="image/*">
+
+    <button class="buttonproduct" type="submit" [disabled]="!productForm.valid">Add Product</button>
+  </form>
+</div>
+
+<div class="boxes">
+  <div *ngFor="let product of products | async" class="product-box">
+    <img [src]="product.imageUrl" width="150" height="140">
+    <div class="product-details">
+      <div class="product-name">{{ product.name }}</div>
+      <div class="product-price">{{ product.price }}</div>
+    </div>
+    <div class="product-actions">
+      <button class="button-red" *ngIf="product.id" (click)="deleteProduct(product.id)">Eliminar producto</button>
+      <button class="button-green" (click)="openUpdateModal(modalContent, product)">Actualizar producto</button>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #modalContent let-modal>
+  <div *ngIf="selectedProduct" class="form-container">  <!-- Muestra el formulario solo si selectedProduct tiene un valor -->
+    <form  [formGroup]="productForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" [(ngModel)]="selectedProduct.name">
+  
+      <label for="price">Price:</label>
+      <input type="number" id="price" formControlName="price" [(ngModel)]="selectedProduct.price">
+  
+      <label for="image">Image:</label>
+      <input type="file" id="image" (change)="onImageChange($event)" accept="image/*">
+  
+      <button class="buttonproduct" type="submit" (click)="updateProduct()">Actualizar producto</button>
+    </form>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
