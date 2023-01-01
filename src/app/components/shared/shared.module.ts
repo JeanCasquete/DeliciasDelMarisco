@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireModule} from '@angular/fire/compat'
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
@@ -21,6 +22,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+
+//FontAwesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -33,6 +38,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     CommonModule,
     FormsModule,
     RouterModule,
+    
     MatSliderModule,
     MatTabsModule,
     MatFormFieldModule,
@@ -43,11 +49,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatDialogModule,
- 
-    
-
-
-
+    MatTableModule,
+    FontAwesomeModule,
+    GoogleMapsModule
     
   ],exports: [
     FormsModule,
@@ -61,6 +65,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule,
     AngularFireModule,
     MatDialogModule,
+    MatTableModule,
+    FontAwesomeModule,
+    GoogleMapsModule
 
   ]
 })
