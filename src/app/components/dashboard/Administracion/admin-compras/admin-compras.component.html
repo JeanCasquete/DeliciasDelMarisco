@@ -1,0 +1,13 @@
+<h1>Administracion Pedidos</h1>
+<div *ngFor="let compra of compras">
+    <p>Cliente: {{compra.nombre}}</p>
+    <p>Correo: {{compra.correo}}</p>
+    <p>Total: {{compra.total}}</p>
+    <ul>
+      <li *ngFor="let producto of compra.productos">
+        <img [src]="producto.imageUrl" alt="Product image">
+        {{producto.name}}
+      </li>
+    </ul>
+    <button  class="btn btn-danger" (click)="eliminarCompra(compra.id)" >Eliminar</button>
+  </div>

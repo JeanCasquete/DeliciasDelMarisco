@@ -1,13 +1,84 @@
+<link href='https://fonts.googleapis.com/css?family=Material+Icons' rel='stylesheet'>
+<div class="container-carrito">           
+  <h2>Realizar Compra</h2>
+  <form id="procesar-pago" [formGroup]="form" (ngSubmit)="procesarCompra()" >
+      <div class="contenido titulo">
+          <label for="cliente" class="">Cliente :</label>
+          <input  formControlName="cliente" type="text" class="form-control" id="cliente" name="cliente" placeholder="Ingrese su nombre"  required>
+      </div>
+      <div class="contenido titulo">
+          <label for="email" class="">Correo :</label>
+          <input  formControlName="correo" type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
+      </div>
+      <div id="carrito" class="contenido">
+        <table class="tabla" id="lista-compra">
+          <thead>
+            <tr>
+              <th scope="col">Imagen</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td class="product-cell">
+                <img src="{{product.imageUrl}}" width="50">
+              </td>
+              <td class="product-cell">
+                {{product.name}}
+              </td>
+              <td class="product-cell">
+                ${{product.price}}
+              </td>
+              <td class="product-cell">
+                <a class="pointer" >
+                  <i class="material-icons" (click)="removeProduct(product)">clear</i>
+                </a>           
+              </td>
+            </tr>
+          </tbody>
+          <tr>
+            <th colspan="3" scope="col" class="">TOTAL : ${{total}}</th>
+            <th scope="col">
+              <input type="text" id="total" name="monto_total" readonly>
+            </th>
+          </tr>
+        </table>
+      </div>
 
-<div class="cart-container">
-  <div class="cart-title">Carrito de compras</div>
+      <div class="" id="loaders">
+          <img id="cargando" src="" width="220">
+      </div>
 
-  <div class="total">Total a pagar: {{ total }}</div>
+      <div class="botones-envio">
+              <a href="" class="button" id="volver">Seguir comprando</a>
+              <input type="submit"  class="button" id="procesar-compra" value="Realizar compra">
 
-  <div class="product-list">
-    <div class="product-item" *ngFor="let product of products">
-      {{ product.name }} - {{ product.price }}
-    </div>
-  </div>
-  <a routerLink="/dashboard/carrito" ><button>Guardar</button></a>
+      </div>
+  </form>
 </div>
+<input type="submit" (click)="openModal()" class="button" id="procesar-compra" value="Abrir Mapa">
+<ng-template #mapContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal Title</h4>
+  </div>
+  <div class="modal-body">
+    <div id="map"></div>
+  </div>
+</ng-template>
+
+
+<ng-template #ModalContent let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Compra exitosa</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>¡Gracias por su compra!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cerrar</button>
+  </div>
+</ng-template>

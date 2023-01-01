@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Product } from '../dashboard/productos2/product';  // Assume you have a Product interface or class
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
+
   cart: Product[] = [];
   total: number=0;
   count: number=0;
@@ -13,7 +16,7 @@ export class CarritoService {
   total$: Subject<number> = new Subject<number>();
 
 
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
 
   getCart(): Product[] {
     return this.cart;
@@ -42,4 +45,28 @@ export class CarritoService {
       this.total$.next(this.total); 
     }
   }
+  procesarCompra(nombre: string, correo: string, productos: any[], total: number) {
+    // Crea un objeto con los datos del formulario y el array de productos
+    const compra = {
+      nombre: nombre,
+      correo: correo,
+      productos: productos,
+      total: total,
+    };
+
+    // Agrega el documento a la colección "compras" de la base de datos
+    this.afs.collection('compras').add(compra);
+  }
+
+
+  getCompras(): Observable<any[]> {
+    // Obtiene los documentos de la colección "compras"
+    return this.afs.collection('compras').snapshotChanges();
+  }
+
+  eliminarCompra(id: string) {
+    this.afs.doc(`compras/${id}`).delete();
+  }
+
+
 }

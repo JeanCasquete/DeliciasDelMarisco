@@ -1,14 +1,17 @@
 
 <br><br>
-<h1 class="product-title">Platos</h1>
-<div class="boxes">
-  <div *ngFor="let product of products | async">
-    <div class="product-box">
-      <img [src]="product.imageUrl" width="150" height="140">
-      <div class="product-name">{{ product.name }}</div>
-      <div class="product-price">{{ product.price }}</div>
-      <button class="buttonproduct" (click)="addToCart(product)">Añadir al carrito</button>
+<h1 style="text-align: center;">PLATOS</h1>
+<div class="d-flex flex-wrap justify-content-end mx-auto" style="width: 80%;">
+  <div *ngFor="let product of products | async" class="card" style="width: 18rem;">
+    <img [src]="product.imageUrl" class="card-img-top" alt="..." style="height: 200px;" >
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{ product.price }}</p>
+      <a (click)="addToCart(product)" class="btn btn-primary" style="margin-left: 50px;">Añadir al carrito</a>
     </div>
   </div>
 </div>
+
+
+
 

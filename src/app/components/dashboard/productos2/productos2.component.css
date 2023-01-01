@@ -1,27 +1,5 @@
 
-    /* Estilos para el contenedor principal */
-    .cart-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-  
-    /* Estilos para el título del carrito */
-    .cart-title {
-      text-align: center;
-      color: darkblue;
-      font-size: larger;
-    }
-  
-    /* Estilos para el total a pagar */
-    .total {
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-size: larger;
-      font-weight: bold;
-      color: darkgreen;
-    }
-  
+
     /* Estilos para la lista de productos */
     .product-list {
       margin-top: 10px;
@@ -74,52 +52,6 @@
     background-color: lightblue;
   }
 
-  .buttoncart {
-    width: 100%;
-    background-color: rgb(54, 181, 104);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .buttoncart:hover {
-    background-color: rgb(162, 224, 167);
-  }
-
-  .product-box {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .product-name {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-top: 10px;
-  }
-  
-  .product-price {
-    font-size: 16px;
-    color: #777;
-    margin-top: 5px;
-  }
-
-  .product-details {
-    margin-left: 10px;
-  }
-  
-  .product-actions {
-    margin-left: auto;
-  }
-
-  
   .button-green {
     background-color: #4caf50;
     color: #fff;
@@ -157,4 +89,13 @@
   
   .button-red:active {
     background-color: #d32f2f;
+  }
+
+  /* Diseño para los action icons*/
+  .pointer {
+    cursor: pointer;
+  }
+
+  .mat-table {
+    margin-bottom: 24px;
   }

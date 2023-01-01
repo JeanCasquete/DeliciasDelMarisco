@@ -1,4 +1,5 @@
-<br><br><br>
+<link href='https://fonts.googleapis.com/css?family=Material+Icons' rel='stylesheet'>
+<br>
 <div class="form-container">
   <form (ngSubmit)="addProduct()" [formGroup]="productForm">
     <label for="name">Name:</label>
@@ -13,25 +14,11 @@
     <button class="buttonproduct" type="submit" [disabled]="!productForm.valid">Add Product</button>
   </form>
 </div>
-
-<div class="boxes">
-  <div *ngFor="let product of products | async" class="product-box">
-    <img [src]="product.imageUrl" width="150" height="140">
-    <div class="product-details">
-      <div class="product-name">{{ product.name }}</div>
-      <div class="product-price">{{ product.price }}</div>
-    </div>
-    <div class="product-actions">
-      <button class="button-red" *ngIf="product.id" (click)="deleteProduct(product.id)">Eliminar producto</button>
-      <button class="button-green" (click)="openUpdateModal(modalContent, product)">Actualizar producto</button>
-    </div>
-  </div>
-</div>
-
+<br>
 
 <ng-template #modalContent let-modal>
   <div *ngIf="selectedProduct" class="form-container">  <!-- Muestra el formulario solo si selectedProduct tiene un valor -->
-    <form  [formGroup]="productForm">
+    <form  [formGroup]="productUpdateForm">
       <label for="name">Name:</label>
       <input type="text" id="name" formControlName="name" [(ngModel)]="selectedProduct.name">
   
@@ -45,6 +32,45 @@
     </form>
   </div>
 </ng-template>
+
+ 
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+ <!-- Imagen Column -->
+ <ng-container matColumnDef="imageUrl" class="mat-elevation-z8">
+  <th mat-header-cell *matHeaderCellDef > Imagen </th>
+  <td mat-cell *matCellDef="let element" > <img [src]="element.imageUrl" alt="" style="width: 80px; height: 80px;"> </td>
+</ng-container>
+
+  <!-- Precio Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Precio </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" style="text-align: right;">
+        <a class="pointer" style="color: darkolivegreen;">
+          <mat-icon (click)="openUpdateModal(modalContent, element)" >edit</mat-icon>
+        </a>
+        <a class="pointer" style="color: brown;">
+          <mat-icon (click)="deleteProduct(element.id)">delete</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br>
 
 
 

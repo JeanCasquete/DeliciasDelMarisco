@@ -11,7 +11,6 @@ import { NgZone } from '@angular/core';
 
 
 
-
 @Component({
   selector: 'app-productos2',
   templateUrl: './productos2.component.html',
@@ -20,7 +19,10 @@ import { NgZone } from '@angular/core';
 export class Productos2Component implements OnInit {
 
 
+  displayedColumns: string[] = ['name', 'imageUrl', 'price','actions'];
   productForm: FormGroup;
+  productUpdateForm: FormGroup;
+
   products: Observable<Product[]>  = new Observable<Product[]>(); 
   selectedFile: File = new File([], '');
   selectedProduct: Product | null = null;
@@ -29,6 +31,10 @@ export class Productos2Component implements OnInit {
     private storage: AngularFireStorage,private carritoService: CarritoService,public dialog: MatDialog,
     private modalService: NgbModal,private ngZone: NgZone) {
     this.productForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      price: ['', Validators.required],
+    });
+    this.productUpdateForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
     });
@@ -78,8 +84,8 @@ export class Productos2Component implements OnInit {
   }
 
   updateProduct() {
-    if (this.productForm.valid && this.selectedProduct) {  // Añade una comprobación de nulidad
-      const product: Product = this.productForm.value;
+    if (this.productUpdateForm.valid && this.selectedProduct) {  // Añade una comprobación de nulidad
+      const product: Product = this.productUpdateForm.value;
       if (this.selectedFile) {
         const filePath = `images/${this.selectedFile.name}`;
         const fileRef = this.storage.ref(filePath);

@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireModule} from '@angular/fire/compat'
-import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
@@ -38,7 +37,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     FormsModule,
     RouterModule,
-    
     MatSliderModule,
     MatTabsModule,
     MatFormFieldModule,
@@ -51,7 +49,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatDialogModule,
     MatTableModule,
     FontAwesomeModule,
-    GoogleMapsModule
     
   ],exports: [
     FormsModule,
@@ -67,7 +64,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatDialogModule,
     MatTableModule,
     FontAwesomeModule,
-    GoogleMapsModule
 
   ]
 })

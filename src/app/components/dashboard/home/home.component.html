@@ -1,65 +1,66 @@
 <body>
-<div class="slider">
-  <ul>
-    <li><img src="../assets/encelide1.webp" alt="..."></li>
-    <li><img src="../assets/encelide2.jpg" alt="..."></li>
-    <li><img src="../assets/encelide3.jpg" alt="..."></li>
-  </ul>
-</div>
-
-
-  <div class="container-index">
-
-    <div class="container-circulos">
-      <div class="container-imagen">
-        <img src="../assets/ceviches.jpg" class="circulo">
-        <h2>Ceviches</h2>
-      </div>
-      <div class="container-imagen">
-        <img src="../assets/encebollado1.jpg" class="circulo">
-        <h2>Encebollados</h2>
-      </div>
-      <div class="container-imagen">
-        <img src="../assets/almuerzos.jpg" class="circulo">
-        <h2>Almuerzos</h2>
-      </div>
+  <div id="carouselExampleCaptions" class="carousel slide carousel-bordered" data-bs-ride="carousel" data-bs-interval="3000">    
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-
-    <div class="ver-todo"><a class="button" href="productos.html">Ver todos</a></div>
-    
-    <div class="contenedor-columna">
-      <div class="columna1">
-        <h2>SOBRE DELICIAS DEL MARISCO </h2>
-        <p>En PET SHOP nuestro equipo trabaja constantemente con energía y entusiasmo para nuestros clientes y sus mascotas. Nos encanta lo que hacemos y eso se refleja no solo en nuestros servicios, sino también en la forma en que construimos relaciones con nuestros clientes.</p>
-      </div>
-      <div class="columna2">
-        <img src="assets/index.png">
-      </div>
-    </div>
-
-  </div>
-
-
-  <footer class="footer-section">
-    <div class="copyright-area">
-        <div class="container-footer">
-            <div class="row-footer">
-                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-                    <div class="copyright-text">
-                        <p>Copyright &copy; 2020, todos los derechos reservados <a href="index.html">PETSHOP</a></p>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-                    <div class="footer-menu">
-                        <ul>
-                            <li><a href="nosotros.html">Nosotros</a></li>
-                            <li><a href="productos.html">Productos</a></li>
-                            <li><a href="contacto.html">Contacto</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../assets/encelide3.jpg" class="d-block w-100" style="height: 500px;" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
         </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../assets/encelide2.jpg" class="d-block w-100" style="height: 500px;" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../assets/encelide1.webp" class="d-block w-100" style="height: 500px;" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
     </div>
-  </footer>   
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<br><br>
+
+  <div class="container" >
+    <div class="row" style="margin-left: 150px;">
+      <div class="col-4">
+        <div class="circle" >
+          <img src="../assets/alimento1.webp" alt="Imagen 1" class="rounded-circle">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="circle">
+          <img src="../assets/alimento2.webp" alt="Imagen 2" class="rounded-circle">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="circle">
+          <img src="../assets/alimento3.webp" alt="Imagen 3" class="rounded-circle">
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-primary">Ver todos</button>
+    </div>
+  </div>
   </body>
+  
+  
