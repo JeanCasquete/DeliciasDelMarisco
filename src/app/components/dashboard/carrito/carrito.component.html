@@ -10,6 +10,18 @@
           <label for="email" class="">Correo :</label>
           <input  formControlName="correo" type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
       </div>
+      <div class="contenido titulo">
+        <label for="calle_1" class="">Calle 1</label>
+        <input  formControlName="calle_1" type="text" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
+    </div>
+    <div class="contenido titulo">
+      <label for="calle_2" class="">Calle Secundaria (referencia)</label>
+      <input  formControlName="calle_2" type="text" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
+  </div>
+  <div class="contenido titulo">
+    <label for="ciudad" class="">Calle 1</label>
+    <input  formControlName="ciudad" type="text" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
+</div>
       <div id="carrito" class="contenido">
         <table class="tabla" id="lista-compra">
           <thead>
@@ -45,27 +57,29 @@
           </tr>
         </table>
       </div>
-
       <div class="" id="loaders">
           <img id="cargando" src="" width="220">
       </div>
-
       <div class="botones-envio">
               <a href="" class="button" id="volver">Seguir comprando</a>
               <input type="submit"  class="button" id="procesar-compra" value="Realizar compra">
-
+              <input type="submit" (click)="openModal()" class="button" id="procesar-compra" value="Abrir Mapa">
       </div>
   </form>
 </div>
-<input type="submit" (click)="openModal()" class="button" id="procesar-compra" value="Abrir Mapa">
 <ng-template #mapContent let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Modal Title</h4>
+    <h4 class="modal-title">Modal Title</h4>   
+<google-map height="300px" width="400px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+  <map-marker *ngIf="markerPosition" [position]="markerPosition" [options]="markerOptions"></map-marker>
+</google-map>
   </div>
   <div class="modal-body">
     <div id="map"></div>
   </div>
 </ng-template>
+
+
 
 
 <ng-template #ModalContent let-modal>

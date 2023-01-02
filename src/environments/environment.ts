@@ -7,7 +7,5 @@ export const environment = {
         storageBucket: "licencias-web.appspot.com",
         messagingSenderId: "66494900289",
         appId: "1:66494900289:web:1ee06e7cefa83263b07ec0"
-      },
-
-    googleMapKey: 'AIzaSyCUeNoX1-1WV8P5mWKUz8LUwxBWc6XyYoA'
+      }
 };

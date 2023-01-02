@@ -45,11 +45,14 @@ export class CarritoService {
       this.total$.next(this.total); 
     }
   }
-  procesarCompra(nombre: string, correo: string, productos: any[], total: number) {
+  procesarCompra(nombre: string, correo: string, calle_1: string, calle_2: string, ciudad: string, productos: any[], total: number) {
     // Crea un objeto con los datos del formulario y el array de productos
     const compra = {
       nombre: nombre,
       correo: correo,
+      calle_1: calle_1,
+      calle_2: calle_2,
+      ciudad: ciudad,
       productos: productos,
       total: total,
     };

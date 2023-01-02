@@ -1,2 +1,15 @@
-<h1>Hola</h1>
-<div id="map"></div>
+
+  
+
+ <input type="submit" (click)="openModal()" class="button" id="procesar-compra" value="Abrir Mapa">
+<ng-template #mapContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal Title</h4>   
+<google-map height="300px" width="400px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+  <map-marker *ngIf="markerPosition" [position]="markerPosition" [options]="markerOptions"></map-marker>
+</google-map>
+  </div>
+  <div class="modal-body">
+    <div id="map"></div>
+  </div>
+</ng-template>
