@@ -17,3 +17,37 @@
 .ancho {
   width: 80%;
 }
+
+.fadeInOut {
+  transition: all .5s ease;
+}
+.fadeInOut.ng-enter {
+  opacity: 0;
+}
+.fadeInOut.ng-enter-active {
+  opacity: 1;
+}
+.fadeInOut.ng-leave {
+  opacity: 1;
+}
+.fadeInOut.ng-leave-active {
+  opacity: 0;
+}
+form {
+  width: 500px;
+  margin: auto;
+  
+}
+
+.button-container {
+  width: 170px;
+  margin: auto;
+
+}
+
+.btn-sign-in {
+  width: 100px;
+  margin: auto;
+  margin-left: 30px;
+}
+

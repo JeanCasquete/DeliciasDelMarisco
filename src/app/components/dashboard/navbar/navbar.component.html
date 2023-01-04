@@ -1,9 +1,8 @@
 <link href='https://fonts.googleapis.com/css?family=Material+Icons' rel='stylesheet'>
 
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><img src="../assets/logito.png" style="width: 50px; border-radius: 25%;" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,11 +21,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Sobre nosotros</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ml-auto" style="position: absolute; right: 0;">
           <a class="nav-link disabled">Disabled</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"(click)="openModal(modalContent)" ><i class="material-icons">shopping_cart </i>
+          <a class="nav-link"data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="material-icons">shopping_cart </i>
             <span class="count">{{ count }}</span>
           </a>
         </li>
@@ -36,25 +35,88 @@
 </nav>
 
 
-
-  <ng-template #modalContent let-modal>
-    <div class="cart-container">
-      <div class="cart-title">Carrito de compras</div>
-      <div class="product-list">
-        <div class="product-item" *ngFor="let product of products">
-          <img src="{{product.imageUrl}}" width="50">
-          {{ product.name }} - {{ product.price }}
-          <button class="delete-button" (click)="removeProduct(product)">Eliminar</button>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Título del modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <a routerLink="/dashboard/carrito"><button class="save-button" (click)="modal.close('Close click')">Guardar</button></a>
+      <div class="modal-body">
+        <section class="h-100 W-50" style="background-color: rgb(183, 183, 183);">
+          <div class="container h-100 py-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-10">
+        
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+                  <div>
+                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
+                          class="fas fa-angle-down mt-1"></i></a></p>
+                  </div>
+                </div>
+        
+                <div class="card rounded-3 mb-4"*ngFor="let product of products" >
+                  <div class="card-body p-4">
+                    <div class="row d-flex justify-content-between align-items-center">
+                      <div class="col-md-2 col-lg-2 col-xl-2">
+                        <img
+                        src="{{product.imageUrl}}"
+                          class="img-fluid rounded-3" alt="Cotton T-shirt">
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-3">
+                        <p class="lead fw-normal mb-2">{{ product.name }}</p>
+                        <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">   
+                      <input id="form1" min="0" name="quantity" type="number"
+                        class="form-control form-control-sm" [(ngModel)]="product.quantity" (change)="updatePrice(product)" style="width: 40px;" />
+                      </div>
+                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h4 class="mb-0">${{ product.price * product.quantity }}</h4>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                        <a class="text-danger" (click)="removeFromCart(product)" ><i class="fas fa-trash fa-lg"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="card mb-4">
+                  <div class="card-body p-4 d-flex flex-row">
+                    <h2>TOTAL: ${{total}}</h2>
+                  </div>
+                </div>     
+                <div class="card mb-4">
+                  <div class="card-body p-4 d-flex flex-row">
+                    <div class="form-outline flex-fill">
+                      <input type="text" id="form1" class="form-control form-control-lg" />
+                      <label class="form-label" for="form1">Discound code</label>
+                    </div>
+                    <button type="button" class="btn btn-outline-warning btn-lg ms-3">Apply</button>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-warning btn-block btn-lg" routerLink="/dashboard/carrito"  data-bs-dismiss="modal" >Proceed to Pay</button>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Comprendido</button>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="close-button" (click)="modal.close('Close click')">Cerrar</button>
-    </div>
-  </ng-template>
+  </div>
+</div>
 
 
 
 
-  
+

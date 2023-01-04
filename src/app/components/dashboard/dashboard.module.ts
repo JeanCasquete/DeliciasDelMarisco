@@ -13,6 +13,7 @@ import { AdminclientComponent } from './Administracion/adminclient/adminclient.c
 import { AdminComprasComponent } from './Administracion/admin-compras/admin-compras.component';
 import { FooterComponent } from './footer/footer.component';
 import { PruebitasComponent } from './pruebitas/pruebitas.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 
@@ -29,6 +30,7 @@ import { PruebitasComponent } from './pruebitas/pruebitas.component';
     AdminComprasComponent,
     FooterComponent,
     PruebitasComponent,
+    ContactoComponent,
   ],
   imports: [
     CommonModule,

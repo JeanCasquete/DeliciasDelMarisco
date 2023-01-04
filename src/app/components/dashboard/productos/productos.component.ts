@@ -28,15 +28,19 @@ export class ProductosComponent implements OnInit {
   }
 
 
-  addToCart(product: Product) {
-    this.carritoService.addToCart(product)
-    
-  }
+  
 
   ngOnChanges(): void {
     // Actualiza el valor del contador cada vez que cambie
     this.count = this.carritoService.getCount();
   }
+
+  addToCart(product: Product) {
+    this.carritoService.addToCart(product)
+    
+  }
+
+
 
 }
 

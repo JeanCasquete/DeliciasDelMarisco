@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { CarritoService } from 'src/app/components/shared/carrito.service';
 import { Product } from '../productos2/product';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 
 @Component({
@@ -18,26 +20,38 @@ export class NavbarComponent implements OnInit {
   products: Product[]=[];  // Declare an array to hold the products in the cart
   total = 0;
 
+  dataUser: any;
+  username: string | undefined;
 
-  constructor(private car: CarritoService,private modalService: NgbModal) { }
+
+  constructor(private car: CarritoService,private modalService: NgbModal,
+    private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase) { }
   ngOnInit() {
     this.products = this.car.getCart();
-    this.count$ = this.car.count$;
-    this.count$.subscribe(count => this.count = count);
-    this.car.total$.subscribe(total => {
-      this.total = total;
+    this.car.count$.subscribe(count => this.count = count);
+    this.car.total$.subscribe(total => this.total = total);
+    this.afAuth.currentUser.then(user => {
+      if (user && user) {
+        this.dataUser = user;
+        this.afDatabase.object<{ username: string }>('users/' + user.uid).valueChanges().subscribe(userData => {
+          if (userData) {
+            this.username = userData.username; // Asignar el nombre de usuario a la variable username
+            
+          }
+        });
+      } else {
+      }
     });
-    
 
   }
 
-  removeProduct(product: Product) {
-    this.car.removeFromCart(product);
+  updatePrice(products: Product) {
+
+    this.car.updatePrice(products);
+
   }
 
-
-  openModal(ModalContent: TemplateRef<any>) {
-    this.modalService.open(ModalContent);
-  }
-
+  removeFromCart(products: Product) {
+  this.car.removeFromCart(products);
+}
 }

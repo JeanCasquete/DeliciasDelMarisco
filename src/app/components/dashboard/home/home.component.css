@@ -1,29 +1,9 @@
 
 
-.btn-v {
- color: gray;
-}
- 
-.carousel-bordered {
-    border: solid 1px #ccc;
-    border-radius: 20spx;
-  }
-
 img {
     object-fit: cover;
   }
 
-  .circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: solid 2px rgb(213, 122, 48);
 
-  }
   
-  img.rounded-circle {
-    width: 100%;
-    height: auto;
-  }
-  
+

@@ -1,72 +1,146 @@
 <link href='https://fonts.googleapis.com/css?family=Material+Icons' rel='stylesheet'>
 <div class="container-carrito">           
   <h2>Realizar Compra</h2>
-  <form id="procesar-pago" [formGroup]="form" (ngSubmit)="procesarCompra()" >
-      <div class="contenido titulo">
-          <label for="cliente" class="">Cliente :</label>
-          <input  formControlName="cliente" type="text" class="form-control" id="cliente" name="cliente" placeholder="Ingrese su nombre"  required>
+  <section class="h-100 h-custom" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-4">
+  
+              <div class="row">
+  
+                <div class="col-lg-7">
+                  <h5 class="mb-3"><a href="#!" class="text-body"><i
+                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                  <hr>
+  
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                      <p class="mb-1">Shopping cart</p>
+                      <p class="mb-0">You have 4 items in your cart</p>
+                    </div>
+                    <div>
+                      <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
+                          class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
+                    </div>
+                  </div>
+  
+                  <div class="card mb-3" *ngFor="let product of products" >
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img
+                               src="{{product.imageUrl}}"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                          </div>
+                          <div class="ms-3">
+                            <h5>{{product.name }}</h5>
+                            <p class="small mb-0">256GB, Navy Blue</p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px;">
+                            <h5 class="fw-normal mb-0">{{product.quantity}}</h5>
+                          </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0">${{product.price * product.quantity }}</h5>
+                          </div>
+                          <a (click)="removeFromCart(product)" style="color: #c7bbbb;"><i class="fas fa-trash-alt trash-icon"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-lg-5">
+  
+                  <div class="card bg-primary text-white rounded-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="mb-0">DETALLES DE COMPRA</h3>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                          class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                      </div>
+                        <form class="mt-4" [formGroup]="form" >
+                        <div class="form-outline form-white mb-4">
+                          <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                            formControlName="cliente" />
+                          <label class="form-label" for="typeName">Nombre</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                          <input type="email" id="typeName" class="form-control form-control-lg" siez="17"
+                            formControlName="correo" />
+                          <label class="form-label" for="typeName">Correo</label>
+                        </div>
+  
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <div class="form-outline form-white">
+                              <input type="text" id="typeExp" class="form-control form-control-lg"
+                                 size="7" id="exp" formControlName="ciudad" />
+                              <label class="form-label" for="typeExp">Ciudad</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-outline form-white">
+                              <button type="button" class="btn btn-light" (click)="openModal()" >Seleccionar Ubicacion</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                          <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                            formControlName="calle_1" />
+                          <label class="form-label" for="typeText">Calle principal</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                          <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                             formControlName="calle_2" />
+                          <label class="form-label" for="typeText">Referencia</label>
+                        </div>
+                        
+  
+                      </form>
+  
+                      <hr class="my-4">
+  
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">Subtotal</p>
+                        <p class="mb-2">${{total}}</p>
+                      </div>
+  
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">Descuento</p>
+                        <p class="mb-2">$0</p>
+                      </div>
+  
+                      <div class="d-flex justify-content-between mb-4">
+                        <h3 class="mb-2">Total</h3>
+                        <h3 class="mb-2">${{total}}</h3>
+                      </div>
+  
+                      <button type="button" class="btn btn-info btn-block btn-lg">
+                        <div class="d-flex justify-content-between">
+                          <button type="button" class="btn btn-light" (click)="procesarCompra()" >PROCESAR PEDIDO <i class="fas fa-long-arrow-alt-right ms-2"></i></button>
+                          
+                        </div>
+                      </button>
+  
+                    </div>
+                  </div>
+  
+                </div>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contenido titulo">
-          <label for="email" class="">Correo :</label>
-          <input  formControlName="correo" type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
-      </div>
-      <div class="contenido titulo">
-        <label for="calle_1" class="">Calle 1</label>
-        <input  formControlName="calle_1" type="text" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
     </div>
-    <div class="contenido titulo">
-      <label for="calle_2" class="">Calle Secundaria (referencia)</label>
-      <input  formControlName="calle_2" type="text" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
-  </div>
-  <div class="contenido titulo">
-    <label for="ciudad" class="">Calle 1</label>
-    <input  formControlName="ciudad" type="text" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo" required>
-</div>
-      <div id="carrito" class="contenido">
-        <table class="tabla" id="lista-compra">
-          <thead>
-            <tr>
-              <th scope="col">Imagen</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let product of products">
-              <td class="product-cell">
-                <img src="{{product.imageUrl}}" width="50">
-              </td>
-              <td class="product-cell">
-                {{product.name}}
-              </td>
-              <td class="product-cell">
-                ${{product.price}}
-              </td>
-              <td class="product-cell">
-                <a class="pointer" >
-                  <i class="material-icons" (click)="removeProduct(product)">clear</i>
-                </a>           
-              </td>
-            </tr>
-          </tbody>
-          <tr>
-            <th colspan="3" scope="col" class="">TOTAL : ${{total}}</th>
-            <th scope="col">
-              <input type="text" id="total" name="monto_total" readonly>
-            </th>
-          </tr>
-        </table>
-      </div>
-      <div class="" id="loaders">
-          <img id="cargando" src="" width="220">
-      </div>
-      <div class="botones-envio">
-              <a href="" class="button" id="volver">Seguir comprando</a>
-              <input type="submit"  class="button" id="procesar-compra" value="Realizar compra">
-              <input type="submit" (click)="openModal()" class="button" id="procesar-compra" value="Abrir Mapa">
-      </div>
-  </form>
-</div>
+  </section>
+
 <ng-template #mapContent let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Modal Title</h4>   

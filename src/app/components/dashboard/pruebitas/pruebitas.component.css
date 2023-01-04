@@ -1,6 +1,81 @@
-#map {
-    height: 400px;
-    width: 600px;
-    margin: auto;
-    text-align: center;
-  }
+/*carrito*/
+#cargando{
+  display: none;
+}
+.container-carrito h2{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.container-carrito form{
+  width: 650px;
+  margin:auto;
+  padding: 10px 20px;
+}
+.container-carrito form .contenido{
+  padding: 10px 20px;
+}
+.container-carrito form .titulo{
+  font-size: 20px;
+  font-weight: 200;    
+}
+.container-carrito form .titulo input{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 7px;
+  box-sizing: border-box;
+  font-size: 17px;
+  border-radius: 8px;
+  border:1px solid  #DF691A;
+}
+#total{
+  border: 0; 
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+#procesar-compra{
+  border: 0;
+  height: 49px;
+  font-size: 16px;
+  outline: none;
+  margin: 50px;
+}
+#volver{
+  margin: 48px;
+}
+.botones-envio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modifications and additions for table styling */
+.tabla {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+.tabla td, .tabla th {
+  width: 33.333%; /* Divide the table into 3 equal columns */
+  padding: .75rem;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+}
+.tabla thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+.tabla img {
+  width: 50px; /* Adjust the width of the product image */
+}
+.tabla .product-cell {
+  font-size: 14px; /* Adjust the font size of the product name and price */
+}
+.pointer {
+  cursor: pointer;
+}
+

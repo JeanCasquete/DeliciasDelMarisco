@@ -1,4 +1,4 @@
-import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CarritoService } from 'src/app/components/shared/carrito.service';
 import { Product } from '../productos2/product';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +17,7 @@ interface GeocodeResponse {
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
-export class CarritoComponent {
+export class CarritoComponent implements OnInit {
 
   products: Product[] = [];
   total = 0;
@@ -45,21 +45,15 @@ export class CarritoComponent {
       calle_2: new FormControl('', Validators.required),
       ciudad: new FormControl('', Validators.required),
       total: new FormControl(),
+
     });
 
    }
 
   ngOnInit() {
     this.products = this.carritoService.getCart();
- 
-        // Suscríbete al Observable y asigna los datos a la variable compras
-        this.carritoService.getCompras().subscribe(compras => {
-          this.compras = compras;
-        });
-    this.total = this.products.reduce((acc, product) => acc + product.price, 0);
-    this.carritoService.total$.subscribe(total => {
-      this.total = total;
-    });
+    this.total = this.products.reduce((a, b) => a + b.price * b.quantity, 0);
+    this.carritoService.total$.subscribe(total => this.total = total);
     }
 
 
@@ -68,16 +62,17 @@ export class CarritoComponent {
      
     }
     
-
-    removeProduct(product: Product) {
-      this.carritoService.removeFromCart(product);
-
+    removeFromCart(products: Product) {
+       this.carritoService.removeFromCart(products);
     }
 
+
+
+    
     procesarCompra() {
       if (this.form && this.form.valid) {
         // Obtiene los valores del formulario a través del objeto FormControl
-        const nombre = this.form.value.cliente;
+        const cliente = this.form.value.cliente;
         const correo = this.form.value.correo;
         const calle_1 = this.form.value.calle_1;
         const calle_2 = this.form.value.calle_2;
@@ -85,17 +80,27 @@ export class CarritoComponent {
 
 
         const total = this.total; // Obtiene el total del carrito a través del servicio
-        console.log(nombre,correo,calle_1,calle_2,ciudad)
-        if (nombre && correo && total >=1) {
+        console.log(cliente,correo,calle_1,calle_2,ciudad)
+        if (cliente && correo && total >=1) {
           // Llama al método procesarCompra() del servicio y pasa los datos del formulario y el array de productos
-          this.carritoService.procesarCompra(nombre, correo,calle_1,calle_2,ciudad, this.products, total);
+          this.carritoService.procesarCompra(cliente, correo,calle_1,calle_2,ciudad, this.products, total);
           this.modalService.open(this.ModalContent);
 
           
         } else {
           console.error('Error: el nombre o el correo son inválidos o no agregaste objetos al carrito');
         }
+      } else {
+        console.log(this.form.controls['cliente'].valid);
+console.log(this.form.controls['correo'].valid);
+console.log(this.form.controls['calle_1'].valid);
+console.log(this.form.controls['calle_2'].valid);
+console.log(this.form.controls['ciudad'].valid);
       }
+    }
+
+    prueba() {
+      console.log("mensaje");
     }
 
     addMarker(event: google.maps.MapMouseEvent) {

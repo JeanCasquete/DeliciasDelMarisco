@@ -1,0 +1,17 @@
+form {
+    width: 500px;
+    margin: auto;
+    
+  }
+  
+  .button-container {
+    width: 170px;
+    margin: auto;
+  
+  }
+  
+  .btn-sign-in {
+    width: 100px;
+    margin: auto;
+    margin-left: 30px;
+  }
