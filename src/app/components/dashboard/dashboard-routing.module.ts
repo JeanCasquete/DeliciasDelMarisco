@@ -7,6 +7,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ProductosComponent } from './productos/productos.component';
 import { Productos2Component } from './productos2/productos2.component';
 import { PruebitasComponent } from './pruebitas/pruebitas.component';
@@ -21,11 +22,7 @@ const routes: Routes = [
     { path: 'administracion/clientes', component: AdminclientComponent },
     { path: 'prueba', component: PruebitasComponent },
     { path: 'contacto', component: ContactoComponent },
-
-
-
-
-
+    { path: 'nosotros', component: NosotrosComponent },
 
   ]  
 },

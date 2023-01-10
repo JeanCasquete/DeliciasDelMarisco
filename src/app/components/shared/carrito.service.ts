@@ -93,6 +93,7 @@ export class CarritoService {
     // Agrega el documento a la colección "compras" de la base de datos
     this.afs.collection('compras').add(compra);
   }
+  
    
 
 

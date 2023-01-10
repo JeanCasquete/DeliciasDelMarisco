@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           this.afDatabase.object<{username: string}>('users/' + user.user.uid).valueChanges().subscribe(userData => {
             if (userData) {
               console.log(userData.username); // Mostrar el nombre de usuario en la consola
-              this.router.navigate(['dashboard']);
+              this.router.navigate(['/dashboard']);
             }
           });
         }
@@ -111,6 +111,8 @@ export class LoginComponent implements OnInit {
 
     }) 
   }
+
+
 
 
 }
