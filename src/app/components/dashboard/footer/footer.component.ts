@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
 
 
@@ -10,6 +11,7 @@ import * as L from 'leaflet';
 })
 export class FooterComponent implements OnInit {
   faWhatsapp = faWhatsapp
+  
 
   ngOnInit(): void {
     

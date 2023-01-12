@@ -15,11 +15,21 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard/productos" >Productos</a>
         </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/dashboard/contacto" >Historial</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard/contacto" >Contacto</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard/nosotros">Sobre nosotros</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" (click)="logout()"><i class="material-icons">logout</i></a>
+        </li>
+        <li class="nav-item" *ngIf="isLogin">
+          <a class="nav-link" routerLink="/login"><fa-icon class="fa-2x" [icon]="faRightToBracket"></fa-icon>
+          </a>
         </li>
         <li class="nav-item ml-auto" style="position: absolute; right: 0;">
           <a class="nav-link disabled">{{username}}</a>

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComprasComponent } from './Administracion/admin-compras/admin-compras.component';
 import { AdminclientComponent } from './Administracion/adminclient/adminclient.component';
+import { AdminempleadoComponent } from './Administracion/adminempleado/adminempleado.component';
+import { MenuadminComponent } from './Administracion/menuadmin/menuadmin.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { DashboardComponent } from './dashboard.component';
@@ -23,6 +25,10 @@ const routes: Routes = [
     { path: 'prueba', component: PruebitasComponent },
     { path: 'contacto', component: ContactoComponent },
     { path: 'nosotros', component: NosotrosComponent },
+    { path: 'empleados', component: AdminempleadoComponent },
+    { path: 'menuempleado', component: MenuadminComponent },
+
+
 
   ]  
 },

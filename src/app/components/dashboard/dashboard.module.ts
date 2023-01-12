@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PruebitasComponent } from './pruebitas/pruebitas.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
+import { AdminempleadoComponent } from './Administracion/adminempleado/adminempleado.component';
+import { MenuadminComponent } from './Administracion/menuadmin/menuadmin.component';
 
 
 
@@ -33,6 +35,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
     PruebitasComponent,
     ContactoComponent,
     NosotrosComponent,
+    AdminempleadoComponent,
+    MenuadminComponent,
   ],
   imports: [
     CommonModule,

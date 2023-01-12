@@ -64,11 +64,15 @@ export class LoginComponent implements OnInit {
       this.afAuth.signInWithEmailAndPassword(email, password).then((user) => {
         if (user && user.user) { // Comprobar si el objeto de usuario es null
           console.log(user);
-          this.afDatabase.object<{username: string}>('users/' + user.user.uid).valueChanges().subscribe(userData => {
-            if (userData) {
-              console.log(userData.username); // Mostrar el nombre de usuario en la consola
-              this.router.navigate(['/dashboard']);
-            }
+          this.afDatabase.object<{tipo: string}>('users/' + user.user.uid).valueChanges().subscribe(userData => {
+            if(userData && userData.tipo ){
+              console.log(userData.tipo);
+              this.router.navigate(['/dashboard/menuempleado']);
+           }else{
+             console.log("usuario no tiene tipo asignado")
+             this.router.navigate(['/dashboard']);
+
+           }
           });
         }
       }).catch((error) => {

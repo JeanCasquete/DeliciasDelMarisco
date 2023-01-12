@@ -1,0 +1,52 @@
+<div class="form-container">
+    <form (ngSubmit)="addempleado()" [formGroup]="adminform">
+      <label for="name">Username:</label>
+      <input type="text" id="name" formControlName="name">
+  
+      <label for="price">Email:</label>
+      <input type="email" id="name" formControlName="email">
+  
+      <label for="image">Contraseña:</label>
+      <input type="password" id="name" formControlName="password">
+  
+      <button class="buttonproduct" type="submit" [disabled]="!adminform.valid">Añadir Empleado</button>
+    </form>
+  </div>
+  <br>
+  <h1>Lista de empleados</h1>
+  <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+  
+  
+    <!-- Precio Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Correo </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+     <!-- Precio Column -->
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef> Tipo </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+        </ng-container>
+  
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          <a class="pointer" style="color: brown;">
+            <mat-icon (click)="deleteUser(element.key)">delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <br>
+  

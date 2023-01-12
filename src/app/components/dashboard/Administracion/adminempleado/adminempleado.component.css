@@ -1,0 +1,63 @@
+
+  
+
+    /* Estilos para la lista de productos */
+    .product-list {
+        margin-top: 10px;
+      }
+    
+      .product-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    /* Estilos para el contenedor principal */
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+    }
+  
+    /* Estilos para los labels */
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    /* Estilos para los inputs */
+    input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+    }
+  
+    /* Estilos para el botón de submit */
+    .buttonproduct {
+      width: 100%;
+      background-color: darkblue;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .buttonproduct:hover {
+      background-color: lightblue;
+    }
+  
+  /* Diseño para los action icons*/
+  .pointer {
+    cursor: pointer;
+  }
+
+  .mat-table {
+    margin-bottom: 24px;
+  }
