@@ -1,0 +1,19 @@
+
+#v-pills-tab {
+  width: 200px;
+  height: 300px;
+}
+.nav-link {
+  color: rgb(74, 77, 88);
+  cursor: pointer;
+}
+.nav-link:hover {
+  color: rgb(66, 146, 150);
+}
+.nav-link.active {
+  background-color: transparent !important;
+  color: inherit !important;
+  color: rgb(74, 77, 88) !important;
+
+
+}

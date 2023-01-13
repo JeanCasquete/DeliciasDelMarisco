@@ -5,6 +5,7 @@ import { finalize, map, Observable } from 'rxjs';
 import { Product } from './product';  // Assume you have a Product interface or class
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { CarritoService } from 'src/app/components/shared/carrito.service';
+import { EmpleadoService } from 'src/app/components/shared/empleado.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgZone } from '@angular/core';
@@ -29,7 +30,7 @@ export class Productos2Component implements OnInit {
 
   constructor(private firestore: AngularFirestore,private formBuilder: FormBuilder,
     private storage: AngularFireStorage,private carritoService: CarritoService,public dialog: MatDialog,
-    private modalService: NgbModal,private ngZone: NgZone) {
+    private modalService: NgbModal,private ngZone: NgZone, private empleadito: EmpleadoService) {
     this.productForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
@@ -42,6 +43,7 @@ export class Productos2Component implements OnInit {
   }
   
   ngOnInit() {
+    this.empleadito.verificarempleado();
     this.products = this.firestore.collection('encebollado').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Product;

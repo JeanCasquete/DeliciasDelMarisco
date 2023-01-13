@@ -1,5 +1,7 @@
 <link href='https://fonts.googleapis.com/css?family=Material+Icons' rel='stylesheet'>
 <br>
+<app-administracion></app-administracion>
+<br>
 <div class="form-container">
   <form (ngSubmit)="addProduct()" [formGroup]="productForm">
     <label for="name">Name:</label>
@@ -51,7 +53,7 @@
   <!-- Precio Column -->
   <ng-container matColumnDef="price">
     <th mat-header-cell *matHeaderCellDef> Precio </th>
-    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    <td mat-cell *matCellDef="let element"> ${{element.price}} </td>
   </ng-container>
 
     <!-- Acciones Column -->

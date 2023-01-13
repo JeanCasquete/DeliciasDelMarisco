@@ -17,6 +17,8 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { AdminempleadoComponent } from './Administracion/adminempleado/adminempleado.component';
 import { MenuadminComponent } from './Administracion/menuadmin/menuadmin.component';
+import { HistorialComponent } from './historial/historial.component';
+import { AdministracionComponent } from './Administracion/administracion/administracion.component';
 
 
 
@@ -37,6 +39,8 @@ import { MenuadminComponent } from './Administracion/menuadmin/menuadmin.compone
     NosotrosComponent,
     AdminempleadoComponent,
     MenuadminComponent,
+    HistorialComponent,
+    AdministracionComponent,
   ],
   imports: [
     CommonModule,

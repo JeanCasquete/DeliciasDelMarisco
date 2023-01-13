@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, private empleadito: EmpleadoService) {}
 
   ngOnInit(): void {
-    
+
   }
+
+
 }

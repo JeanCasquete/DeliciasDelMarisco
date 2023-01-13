@@ -73,4 +73,24 @@ getLogueo() {
 }
 
 
+verificarempleado() {
+  this.afAuth.onAuthStateChanged((user) => {
+    if (user  ) {
+    this.afDatabase.object<{ tipo: string }>('users/' + user.uid).valueChanges().subscribe(userData => {
+      if(userData && userData.tipo )
+      {
+        console.log(userData.tipo);
+     }else{
+       this.router.navigate(["/dashboard"])
+
+     }
+    });
+
+    } else {
+      this.router.navigate(["/dashboard"])
+    }
+  });
+}
+
+
 }

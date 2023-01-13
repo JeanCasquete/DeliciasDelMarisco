@@ -1,13 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize, map, Observable } from 'rxjs';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { EmpleadoService } from 'src/app/components/shared/empleado.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgZone } from '@angular/core';
-import { User } from './empleado';
 
 
 @Component({
@@ -30,6 +25,7 @@ export class AdminempleadoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.empleadito.verificarempleado();
     this.empleadito.usersRef.snapshotChanges().pipe(map(changes =>
       changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
     )).subscribe(users => {

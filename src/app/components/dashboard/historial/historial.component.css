@@ -1,0 +1,38 @@
+div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border: 1px solid lightgray;
+    padding: 1rem;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+  
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  button {
+    width: 80px;
+    height: 30px;
+    padding: 0 10px;  /* agrega espacio de 10px a izquierda y derecha del contenido del botón */
+  }

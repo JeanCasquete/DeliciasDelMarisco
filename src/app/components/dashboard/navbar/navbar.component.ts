@@ -23,46 +23,26 @@ export class NavbarComponent implements OnInit {
   total = 0;
   isLogged = false;
   isLogin = true;
+  isEmpleado=false;
 
 
   dataUser: any;
   username: string | undefined;
-
+  email!: string | null;
 
   constructor(private car: CarritoService,private modalService: NgbModal,
     private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase)
      {
-      this.afAuth.onAuthStateChanged((user) => {
-        if (user) {
-          console.log("estas logueado");   
-          this.isLogged = true;
-          this.isLogin = false;
-
-        } else {
-          console.log("no estas logueado");
-          this.isLogged = false;
-          this.isLogin = true;
-
-        }
-      });
+        
     }
  
   ngOnInit() {
+    this.actualizarlogin();
+    this.verificarempleado();
     this.products = this.car.getCart();
     this.car.count$.subscribe(count => this.count = count);
     this.car.total$.subscribe(total => this.total = total);
-    this.afAuth.currentUser.then(user => {
-      if (user && user) {
-        this.dataUser = user;
-        this.afDatabase.object<{ username: string }>('users/' + user.uid).valueChanges().subscribe(userData => {
-          if (userData) {
-            this.username = userData.username; // Asignar el nombre de usuario a la variable username
-            
-          }
-        });
-      } else {
-      }
-    });
+
 
   }
 
@@ -77,6 +57,52 @@ export class NavbarComponent implements OnInit {
 }
 logout() {
   this.afAuth.signOut();
+  this.actualizarlogin();
+}
+
+actualizarlogin() {
+  this.afAuth.onAuthStateChanged((user) => {
+    if (user  ) {
+      console.log("estas logueado");   
+      this.isLogged = true;
+      this.isLogin = false;
+      this.dataUser = user;
+      this.email = user.email;
+    this.afDatabase.object<{ username: string }>('users/' + user.uid).valueChanges().subscribe(userData => {
+      if (userData) {
+        this.username = userData.username; // Asignar el nombre de usuario a la variable username  
+      }
+    });
+
+    } else {
+      console.log("no estas logueado");
+      this.isLogged = false;
+      this.isLogin = true;
+      this.username='';
+      this.email='';
+
+    }
+  });
+}
+
+verificarempleado() {
+  this.afAuth.onAuthStateChanged((user) => {
+    if (user  ) {
+    this.afDatabase.object<{ tipo: string }>('users/' + user.uid).valueChanges().subscribe(userData => {
+      if(userData && userData.tipo )
+      {
+        console.log(userData.tipo);
+        this.isEmpleado=true;
+     }else{
+       
+       this.isEmpleado=false;
+     }
+    });
+
+    } else {
+      
+    }
+  });
 }
 
 }

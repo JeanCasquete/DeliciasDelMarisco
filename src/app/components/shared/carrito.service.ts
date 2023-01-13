@@ -14,6 +14,8 @@ export class CarritoService {
   count: number=0;
   count$: Subject<number> = new Subject<number>();
   total$: Subject<number> = new Subject<number>();
+  currentDate!:string;
+  currentTime!: string;
 
 
 
@@ -67,10 +69,7 @@ export class CarritoService {
 
     
 
-  getCompras(): Observable<any[]> {
-    // Obtiene los documentos de la colección "compras"
-    return this.afs.collection('compras').snapshotChanges();
-  }
+
 
   eliminarCompra(id: string) {
     this.afs.doc(`compras/${id}`).delete();
@@ -80,6 +79,9 @@ export class CarritoService {
 
   procesarCompra(nombre: string, correo: string, calle_1: string, calle_2: string, ciudad: string, productos: any[], total: number) {
     // Crea un objeto con los datos del formulario y el array de productos
+    const now = new Date();
+    this.currentDate = now.toLocaleDateString();
+    this.currentTime = now.toLocaleTimeString();
     const compra = {
       nombre: nombre,
       correo: correo,
@@ -88,12 +90,21 @@ export class CarritoService {
       ciudad: ciudad,
       productos: productos,
       total: total,
+      fecha: this.currentDate,
+      hora: this.currentTime,
     };
 
     // Agrega el documento a la colección "compras" de la base de datos
     this.afs.collection('compras').add(compra);
   }
-  
+  getCompras(): Observable<any[]> {
+    // Obtiene los documentos de la colección "compras"
+    return this.afs.collection('compras').snapshotChanges();
+  }
+
+  getComprasPorEmail(email: string): Observable<any[]> {
+    return this.afs.collection('compras', ref => ref.where('correo', '==', email)).snapshotChanges();
+  }
    
 
 

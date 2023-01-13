@@ -1,0 +1,31 @@
+<ng-container *ngIf="compritas">
+    <div *ngFor="let compra of compritas">
+      <p>Cliente: {{compra.nombre}}</p>
+      <p>Correo: {{compra.correo}}</p>
+      <p>Calle: {{compra.calle_1}}</p>
+      <p>Referencia: {{compra.calle_2}}</p>
+      <p>Fecha: {{compra.fecha}}</p> 
+      <p>Hora: {{compra.hora}}</p>       
+      <ul>
+        <li *ngFor="let producto of compra.productos">
+          <img [src]="producto.imageUrl" alt="Product image">
+          Plato: {{producto.name}} <br>
+          Precio por unidad: ${{producto.price}} <br>
+          Cantidad: {{producto.quantity}} <br>
+        </li>
+      </ul>
+      <p>Total: ${{compra.total}}</p>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="compritas; else noCompras">
+    <div *ngIf="compritas.length === 0">
+      <p>Aun no tienes compras.</p>
+    </div>
+  </ng-container>
+  
+  <ng-template #noCompras>
+    <mat-spinner></mat-spinner>
+    <p>Cargando...</p>
+  </ng-template>
+  

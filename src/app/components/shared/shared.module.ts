@@ -26,6 +26,8 @@ import { environment } from 'src/environments/environment';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 //FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -55,7 +57,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     GoogleMapsModule,
     HttpClientModule,
-    
+    MatProgressSpinnerModule
 
     
   ],exports: [
@@ -73,7 +75,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatTableModule,
     FontAwesomeModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
